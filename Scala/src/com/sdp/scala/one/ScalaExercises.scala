@@ -1,10 +1,14 @@
 package com.sdp.scala.one
 
+import com.atomicscala.AtomicTest._
+import com.sdp.scala.one.Cup3
+
 /**
  * Created by bmason06 on 28/01/2016.
+ *
+ * All Scala exercises crammed into one, sorry its ugly (I know its not good to do this)
  */
 object ScalaExercises extends App {
-
 
   // Expressions (done in REPL and checked)
 
@@ -162,6 +166,32 @@ object ScalaExercises extends App {
   val flare2 = motorboat2.signal()
   assert(flare2 == "Flare used!", "Expected Flare used!, Got " + flare2)
 
+  // Fields in Classes
+
+  // 1.
+  val cup1 = new Cup1
+  cup1.add(45) is 45
+  cup1.add(-15) is 30
+  cup1.add(-50) is -20
+
+  // 2.
+  val cup2 = new Cup2
+  cup2.add(45) is 45
+  cup2.add(-55) is 0
+  cup2.add(10) is 10
+  cup2.add(-9) is 1
+  cup2.add(-2) is 0
+
+  // 3.
+  var cup3 = new Cup3
+  cup3.percentFull = 56
+  cup3.percentFull is 56
+
+  // 4.
+  val cup4 = new Cup2
+  cup4.set(56)
+  cup4.get() is 56
+
 }
 
 // classes
@@ -189,4 +219,35 @@ class Motorboat {
 }
 class Flare {
   def light(): String = {"Flare used!"}
+}
+class Cup1 {
+  var percentFull = 0
+  val max = 100
+  def add(increase:Int):Int = {
+    percentFull += increase
+    if(percentFull > max) {
+      percentFull = max
+    }
+    percentFull // Return this value
+  }
+}
+class Cup2 {
+  var percentFull = 0
+  val max = 100
+  def add(increase:Int):Int = {
+    percentFull += increase
+    if(percentFull > max) {
+      percentFull = max
+    }
+    if(percentFull < 0) {
+      percentFull = 0
+    }
+    percentFull // Return this value
+  }
+  def set(x: Int) = {
+    percentFull = x
+  }
+  def get() = {
+    percentFull
+  }
 }
