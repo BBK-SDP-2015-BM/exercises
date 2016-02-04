@@ -2,6 +2,8 @@ package com.sdp.scala.dp.abstractFactory
 
 /**
  * Created by bmason06 on 04/02/2016.
+ *
+ * An abstract factory should be used to generate families of classes.
  */
 object AbstractFactoryPattern extends App {
 
