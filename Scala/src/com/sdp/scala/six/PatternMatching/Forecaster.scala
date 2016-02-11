@@ -3,7 +3,7 @@ package com.sdp.scala.six.PatternMatching
 /**
  * Created by bmason06 on 11/02/2016.
  */
-class Forecaster {
+object Forecaster {
 
   def forecast(temp: Int): String = temp match {
     case 100 => "Sunny"
