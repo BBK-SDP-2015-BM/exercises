@@ -5,12 +5,6 @@ package com.sdp.scala.eight.generics2
   */
 sealed trait IntList {
 
-  def fold(end: Int, f: (Int, Int) => Int): Int =
-    this match {
-      case End => end
-      case Pair(hd, tl) => f(hd, tl.fold(end, f))
-    }
-
   def length: Int =
     this match {
       case End => 0
@@ -33,6 +27,16 @@ sealed trait IntList {
     case End => 0
     case Pair(hd, tl) => hd + tl.sum
   }
+
+  def fold(end: Int, f: (Int, Int) => Int): Int =
+    this match {
+      case End => end
+      case Pair(hd, tl) => f(hd, tl.fold(end, f))
+    }
+
+  def length2: Int = fold(0, (x, y) => 1 + y)
+  def sum2: Int = fold(0, (x, y) => x + y)
+  def product2: Int = fold(1, (x, y) => x * y)
 
 }
 
